@@ -1,0 +1,11 @@
+[Unit]
+Description=SSH tunnel to Yana's xrdp (localhost:3390), started on demand by yana-desktop
+StartLimitIntervalSec=300
+StartLimitBurst=3
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/bin/ssh -N -o BatchMode=yes -o ExitOnForwardFailure=yes -o ServerAliveInterval=30 -o ServerAliveCountMax=3 -L 3390:10.254.254.1:3390 yana-rig
+Restart=on-failure
+RestartSec=15

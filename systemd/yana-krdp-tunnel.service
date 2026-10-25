@@ -1,0 +1,9 @@
+[Unit]
+Description=SSH tunnel to Yana's KRdp (localhost:3389), started on demand by yana-screen
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/bin/ssh -N -o BatchMode=yes -o ExitOnForwardFailure=yes -o ServerAliveInterval=30 -o ServerAliveCountMax=3 -L 3389:localhost:3389 yana-rig
+Restart=on-failure
+RestartSec=15
