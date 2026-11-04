@@ -1,0 +1,17 @@
+[Unit]
+Description=Apache Guacamole guacd (RDP proxy, localhost only)
+After=network-online.target
+
+[Container]
+ContainerName=guacd
+Image=docker.io/guacamole/guacd@sha256:8974eaa9ba32f713daf311e7cc8cd7e4cdfba1edea39eed75524e78ef4b08f4f
+Network=host
+# image entrypoint already adds "-f -b 0.0.0.0"; the later -b wins -> localhost only
+Exec=-b 127.0.0.1
+
+[Service]
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target
