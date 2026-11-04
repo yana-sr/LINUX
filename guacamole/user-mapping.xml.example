@@ -1,0 +1,15 @@
+<!-- Template only. The real file lives at ~/guacamole/user-mapping.xml on Yana's
+     machine (not in git — it holds a real login password) and is bind-mounted
+     read-only into the guacamole container by guacd.container/guacamole.container. -->
+<user-mapping>
+    <authorize username="yana" password="CHANGE_ME">
+        <connection name="Yana-Desktop">
+            <protocol>rdp</protocol>
+            <param name="hostname">127.0.0.1</param>
+            <param name="port">3389</param>
+            <param name="username">yana</param>
+            <param name="security">tls</param>
+            <param name="ignore-cert">true</param>
+        </connection>
+    </authorize>
+</user-mapping>
